@@ -14,9 +14,9 @@ h2{font-size:32px}
 h3{font-size:28px}
 h4{font-size:18px}
 hr{margin:25px 0}
-div.card{background:#e7e7e7;border-radius:5px;height:150px;position:relative;width:100px}
+div.card{background:#e7e7e7;border-radius:5px;display:inline-block;height:150px;position:relative;width:100px}
 div.card .top{left:5px;position:absolute;top:5px}
-div.card .middle{height:130px;margin:10px 15px;position:relative;top:10px}
+div.card .middle{height:130px;margin:0 15px;position:relative;top:10px}
 div.card .middle .suite-display{height:100%;margin:0 auto;text-align:center}
 div.card .middle ul.col{display:inline-block;font-size:32px;height:100%;vertical-align:top;width:18px}
 div.card ul.col.two li:first-child{padding-bottom:32px}

@@ -11041,7 +11041,7 @@ window.jQuery = window.$ = jQuery;
   }
   return this.require.define;
 }).call(this)({"main": function(exports, require, module) {(function() {
-  var HomeView, MainRouter;
+  var CardView, HomeView, MainRouter;
   window.app = {};
   app.routers = {};
   app.models = {};
@@ -11049,10 +11049,12 @@ window.jQuery = window.$ = jQuery;
   app.views = {};
   MainRouter = require('routers/main_router').MainRouter;
   HomeView = require('views/home_view').HomeView;
+  CardView = require('views/card_view').CardView;
   $(document).ready(function() {
     app.initialize = function() {
       app.routers.main = new MainRouter();
       app.views.home = new HomeView();
+      app.views.card = new CardView();
       if (Backbone.history.getFragment() === '') {
         return app.routers.main.navigate('home', true);
       }
@@ -11060,6 +11062,28 @@ window.jQuery = window.$ = jQuery;
     app.initialize();
     return Backbone.history.start();
   });
+}).call(this);
+}, "models/card_model": function(exports, require, module) {(function() {
+  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
+    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor;
+    child.__super__ = parent.prototype;
+    return child;
+  };
+  exports.Card = (function() {
+    __extends(Card, Backbone.Model);
+    function Card() {
+      Card.__super__.constructor.apply(this, arguments);
+    }
+    Card.prototype.defaults = {
+      pip: '',
+      suit: '♠',
+      color: 'b'
+    };
+    return Card;
+  })();
 }).call(this);
 }, "routers/main_router": function(exports, require, module) {(function() {
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
@@ -11084,7 +11108,7 @@ window.jQuery = window.$ = jQuery;
     return MainRouter;
   })();
 }).call(this);
-}, "templates/home": function(exports, require, module) {module.exports = function(__obj) {
+}, "templates/card": function(exports, require, module) {module.exports = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -11123,13 +11147,83 @@ window.jQuery = window.$ = jQuery;
   }
   (function() {
     (function() {
-      __out.push('<section id="container">\n  <div class="card">\n    <div class="top">\n      <div class="pip">4</div>\n      <div class="suite small">&#9824;</div>\n    </div>\n    <div class="middle">\n      <div class="suite-display">\n        <ul class="col two">\n          <li>&#9824;</li>\n          <li>&#9824;</li>\n        </ul>\n        <ul class="col"></ul>\n        <ul class="col two">\n          <li>&#9824;</li>\n          <li>&#9824;</li>\n        </ul>\n      </div>\n    </div>\n    <div class="bottom">\n      <div>&#9824;</div>\n      <div class="pip">4</div>\n    </div>\n  </div>\n</section>\n');
+      __out.push('<div class="top">\n  <div class="pip">4</div>\n  <div class="suite small">&#9824;</div>\n</div>\n<div class="middle">\n  <div class="suite-display">\n    <ul class="col two">\n      <li>&#9824;</li>\n      <li>&#9824;</li>\n    </ul>\n    <ul class="col"></ul>\n    <ul class="col two">\n      <li>&#9824;</li>\n      <li>&#9824;</li>\n    </ul>\n  </div>\n</div>\n<div class="bottom">\n  <div>&#9824;</div>\n  <div class="pip">4</div>\n</div>\n');
     }).call(this);
     
   }).call(__obj);
   __obj.safe = __objSafe, __obj.escape = __escape;
   return __out.join('');
-}}, "views/home_view": function(exports, require, module) {(function() {
+}}, "templates/home": function(exports, require, module) {module.exports = function(__obj) {
+  if (!__obj) __obj = {};
+  var __out = [], __capture = function(callback) {
+    var out = __out, result;
+    __out = [];
+    callback.call(this);
+    result = __out.join('');
+    __out = out;
+    return __safe(result);
+  }, __sanitize = function(value) {
+    if (value && value.ecoSafe) {
+      return value;
+    } else if (typeof value !== 'undefined' && value != null) {
+      return __escape(value);
+    } else {
+      return '';
+    }
+  }, __safe, __objSafe = __obj.safe, __escape = __obj.escape;
+  __safe = __obj.safe = function(value) {
+    if (value && value.ecoSafe) {
+      return value;
+    } else {
+      if (!(typeof value !== 'undefined' && value != null)) value = '';
+      var result = new String(value);
+      result.ecoSafe = true;
+      return result;
+    }
+  };
+  if (!__escape) {
+    __escape = __obj.escape = function(value) {
+      return ('' + value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    };
+  }
+  (function() {
+    (function() {
+    
+    }).call(this);
+    
+  }).call(__obj);
+  __obj.safe = __objSafe, __obj.escape = __escape;
+  return __out.join('');
+}}, "views/card_view": function(exports, require, module) {(function() {
+  var cardTemplate;
+  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
+    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor;
+    child.__super__ = parent.prototype;
+    return child;
+  };
+  cardTemplate = require('templates/card');
+  exports.CardView = (function() {
+    __extends(CardView, Backbone.View);
+    function CardView() {
+      CardView.__super__.constructor.apply(this, arguments);
+    }
+    CardView.prototype.tagName = 'div';
+    CardView.prototype.className = 'card';
+    CardView.prototype.render = function() {
+      $(this.el).html(cardTemplate());
+      return this;
+    };
+    return CardView;
+  })();
+}).call(this);
+}, "views/home_view": function(exports, require, module) {(function() {
   var homeTemplate;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
@@ -11145,9 +11239,10 @@ window.jQuery = window.$ = jQuery;
     function HomeView() {
       HomeView.__super__.constructor.apply(this, arguments);
     }
-    HomeView.prototype.id = 'home-view';
+    HomeView.prototype.id = 'container';
     HomeView.prototype.render = function() {
       $(this.el).html(homeTemplate());
+      $(this.el).append(app.views.card.render().el);
       return this;
     };
     return HomeView;
