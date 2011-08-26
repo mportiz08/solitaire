@@ -14,7 +14,7 @@ $(document).ready ->
   app.initialize = ->
     app.routers.main = new MainRouter()
     app.views.home = new HomeView()
-    app.views.card = new CardView(model: new Card(color: 'r', suit: '♥', pip: '3'))
+    app.views.card = new CardView(model: new Card(color: 'r', suit: '♥', pip: '10'))
     app.routers.main.navigate 'home', true if Backbone.history.getFragment() is ''
   app.initialize()
   Backbone.history.start()

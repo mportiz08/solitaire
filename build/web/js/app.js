@@ -11059,7 +11059,7 @@ window.jQuery = window.$ = jQuery;
         model: new Card({
           color: 'r',
           suit: '♥',
-          pip: '3'
+          pip: '10'
         })
       });
       if (Backbone.history.getFragment() === '') {
