@@ -11057,7 +11057,9 @@ window.jQuery = window.$ = jQuery;
       app.views.home = new HomeView();
       app.views.card = new CardView({
         model: new Card({
-          color: 'r'
+          color: 'r',
+          suit: '♥',
+          pip: '3'
         })
       });
       if (Backbone.history.getFragment() === '') {
@@ -11087,8 +11089,23 @@ window.jQuery = window.$ = jQuery;
       suit: '♠',
       color: 'b',
       rows: {
-        '4': [2, 0, 2]
+        'A': [0, 0, 0],
+        '2': [0, 2, 0],
+        '3': [0, 3, 0],
+        '4': [2, 0, 2],
+        '5': [2, 1, 2],
+        '6': [3, 0, 3],
+        '7': [3, 1, 3],
+        '8': [3, 2, 3],
+        '9': [4, 1, 4],
+        '10': [4, 2, 4],
+        'J': [1, 0, 1],
+        'Q': [1, 0, 1],
+        'K': [1, 0, 1]
       }
+    };
+    Card.prototype.blah = function() {
+      return this.get('rows')[this.get('pip')][0];
     };
     return Card;
   })();
