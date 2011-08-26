@@ -1,0 +1,27 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+:focus{outline:0}
+ins{text-decoration:none}
+del{text-decoration:line-through}
+table{border-collapse:collapse;border-spacing:0}
+html,body{background:#2d5444;color:#000;font-family:"Helvetica Nueue",Helvetica,arial,sans-serif;height:100%}
+a,a:visited,a:active,a:hover{color:#000}
+h1{font-size:56px}
+h2{font-size:32px}
+h3{font-size:28px}
+h4{font-size:18px}
+hr{margin:25px 0}
+div.card{background:#e7e7e7;border-radius:5px;height:150px;position:relative;width:100px}
+div.card .top{left:5px;position:absolute;top:5px}
+div.card .middle{height:130px;margin:10px 15px;position:relative;top:10px}
+div.card .middle .suite-display{height:100%;margin:0 auto;text-align:center}
+div.card .middle ul.col{display:inline-block;font-size:32px;height:100%;vertical-align:top;width:18px}
+div.card ul.col.two li:first-child{padding-bottom:32px}
+div.card ul.col.two li:last-child{padding-top:32px}
+div.card .bottom{bottom:5px;position:absolute;right:5px;text-align:right}
+div.card .suite{vertical-align:middle}
+div.card .suite.large{font-size:32px;padding:0 5px}
+#container{padding:25px 50px}
