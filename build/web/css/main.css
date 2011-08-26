@@ -19,8 +19,9 @@ hr{margin:25px 0}
 div.card{background:#fff;background:-webkit-radial-gradient(circle,#fff,#eee);background:-moz-radial-gradient(circle,#fff,#eee);border-radius:5px;cursor:pointer;display:inline-block;height:150px;position:relative;width:100px}
 div.card .top{left:5px;position:absolute;top:5px}
 div.card .middle{height:130px;margin:0 15px;position:relative;top:10px}
-div.card .middle .suite-display{height:100%;margin:0 auto;text-align:center}
+div.card .middle .suit-display{height:100%;margin:0 auto;position:relative;text-align:center}
 div.card .middle ul.col{display:inline-block;font-size:32px;height:100%;vertical-align:top;width:18px}
+div.card .middle .suit-display .suit.large{font-size:64px;height:64px;margin-top:-32px;position:absolute;text-align:center;top:50%;width:60px}
 div.card ul.col.rows-1 li{padding:48px 0}
 div.card ul.col.rows-2 li:first-child{padding-bottom:32px}
 div.card ul.col.rows-2 li:last-child{padding-top:32px}
@@ -33,6 +34,6 @@ div.card .pip-7 ul.col.rows-1 li{padding-top:24px}
 div.card .pip-8 ul.col.rows-2 li:first-child,div.card .pip-10 ul.col.rows-2 li:first-child{padding:24px 0 0 0}
 div.card .pip-8 ul.col.rows-2 li:last-child,div.card .pip-10 ul.col.rows-2 li:last-child{padding-top:24px}
 div.card .bottom{bottom:5px;position:absolute;right:5px;text-align:right}
-div.card .suite{vertical-align:middle}
-div.card .suite.large{font-size:32px;padding:0 5px}
+div.card .suit{vertical-align:middle}
+div.card .suit.large{font-size:32px;padding:0 5px}
 #container{padding:25px 50px}

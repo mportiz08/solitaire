@@ -1,8 +1,13 @@
 class exports.Card extends Backbone.Model      
   defaults:
-    pip:   '4'
+    pip:   'A'
     suit:  '♠'
     color: 'b'
+    suits: 
+      clubs:    '♣'
+      diamonds: '♦'
+      hearts:   '♥'
+      spades:   '♠'
     rows:
        'A':  [0, 0, 0]
        '2':  [0, 2, 0]

@@ -1,25 +1,29 @@
 <div class="pip-<%= @card.pip %> color-<%= @card.color %>">
   <div class="top">
     <div class="pip"><%= @card.pip %></div>
-    <div class="suite small"><%= @card.suit %></div>
+    <div class="suit small"><%= @card.suit %></div>
   </div>
   <div class="middle">
-    <div class="suite-display">
-      <ul class="col rows-<%= @card.rows[@card.pip][0] %>">
-        <% for num in [0...@card.rows[@card.pip][0]]: %>
-          <li><%= @card.suit %></li>
-        <% end %>
-      </ul>
-      <ul class="col rows-<%= @card.rows[@card.pip][1] %>">
-        <% for num in [0...@card.rows[@card.pip][1]]: %>
-          <li><%= @card.suit %></li>
-        <% end %>
-      </ul>
-      <ul class="col rows-<%= @card.rows[@card.pip][2] %>">
-        <% for num in [0...@card.rows[@card.pip][2]]: %>
-          <li><%= @card.suit %></li>
-        <% end %> 
-      </ul>
+    <div class="suit-display">
+      <% if @card.pip == 'A': %>
+        <div class="suit large"><%= @card.suit %></div>
+      <% else: %>
+        <ul class="col rows-<%= @card.rows[@card.pip][0] %>">
+          <% for num in [0...@card.rows[@card.pip][0]]: %>
+            <li><%= @card.suit %></li>
+          <% end %>
+        </ul>
+        <ul class="col rows-<%= @card.rows[@card.pip][1] %>">
+          <% for num in [0...@card.rows[@card.pip][1]]: %>
+            <li><%= @card.suit %></li>
+          <% end %>
+        </ul>
+        <ul class="col rows-<%= @card.rows[@card.pip][2] %>">
+          <% for num in [0...@card.rows[@card.pip][2]]: %>
+            <li><%= @card.suit %></li>
+          <% end %> 
+        </ul>
+      <% end %>
     </div>
   </div>
   <div class="bottom">

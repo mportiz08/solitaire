@@ -11057,9 +11057,8 @@ window.jQuery = window.$ = jQuery;
       app.views.home = new HomeView();
       app.views.card = new CardView({
         model: new Card({
-          color: 'r',
-          suit: '♥',
-          pip: '10'
+          pip: '3',
+          suit: '♣'
         })
       });
       if (Backbone.history.getFragment() === '') {
@@ -11085,9 +11084,15 @@ window.jQuery = window.$ = jQuery;
       Card.__super__.constructor.apply(this, arguments);
     }
     Card.prototype.defaults = {
-      pip: '4',
+      pip: 'A',
       suit: '♠',
       color: 'b',
+      suits: {
+        clubs: '♣',
+        diamonds: '♦',
+        hearts: '♥',
+        spades: '♠'
+      },
       rows: {
         'A': [0, 0, 0],
         '2': [0, 2, 0],
@@ -11179,33 +11184,41 @@ window.jQuery = window.$ = jQuery;
       __out.push(__sanitize(this.card.color));
       __out.push('">\n  <div class="top">\n    <div class="pip">');
       __out.push(__sanitize(this.card.pip));
-      __out.push('</div>\n    <div class="suite small">');
+      __out.push('</div>\n    <div class="suit small">');
       __out.push(__sanitize(this.card.suit));
-      __out.push('</div>\n  </div>\n  <div class="middle">\n    <div class="suite-display">\n      <ul class="col rows-');
-      __out.push(__sanitize(this.card.rows[this.card.pip][0]));
-      __out.push('">\n        ');
-      for (num = 0, _ref = this.card.rows[this.card.pip][0]; 0 <= _ref ? num < _ref : num > _ref; 0 <= _ref ? num++ : num--) {
-        __out.push('\n          <li>');
+      __out.push('</div>\n  </div>\n  <div class="middle">\n    <div class="suit-display">\n      ');
+      if (this.card.pip === 'A') {
+        __out.push('\n        <div class="suit large">');
         __out.push(__sanitize(this.card.suit));
-        __out.push('</li>\n        ');
+        __out.push('</div>\n      ');
+      } else {
+        __out.push('\n        <ul class="col rows-');
+        __out.push(__sanitize(this.card.rows[this.card.pip][0]));
+        __out.push('">\n          ');
+        for (num = 0, _ref = this.card.rows[this.card.pip][0]; 0 <= _ref ? num < _ref : num > _ref; 0 <= _ref ? num++ : num--) {
+          __out.push('\n            <li>');
+          __out.push(__sanitize(this.card.suit));
+          __out.push('</li>\n          ');
+        }
+        __out.push('\n        </ul>\n        <ul class="col rows-');
+        __out.push(__sanitize(this.card.rows[this.card.pip][1]));
+        __out.push('">\n          ');
+        for (num = 0, _ref2 = this.card.rows[this.card.pip][1]; 0 <= _ref2 ? num < _ref2 : num > _ref2; 0 <= _ref2 ? num++ : num--) {
+          __out.push('\n            <li>');
+          __out.push(__sanitize(this.card.suit));
+          __out.push('</li>\n          ');
+        }
+        __out.push('\n        </ul>\n        <ul class="col rows-');
+        __out.push(__sanitize(this.card.rows[this.card.pip][2]));
+        __out.push('">\n          ');
+        for (num = 0, _ref3 = this.card.rows[this.card.pip][2]; 0 <= _ref3 ? num < _ref3 : num > _ref3; 0 <= _ref3 ? num++ : num--) {
+          __out.push('\n            <li>');
+          __out.push(__sanitize(this.card.suit));
+          __out.push('</li>\n          ');
+        }
+        __out.push(' \n        </ul>\n      ');
       }
-      __out.push('\n      </ul>\n      <ul class="col rows-');
-      __out.push(__sanitize(this.card.rows[this.card.pip][1]));
-      __out.push('">\n        ');
-      for (num = 0, _ref2 = this.card.rows[this.card.pip][1]; 0 <= _ref2 ? num < _ref2 : num > _ref2; 0 <= _ref2 ? num++ : num--) {
-        __out.push('\n          <li>');
-        __out.push(__sanitize(this.card.suit));
-        __out.push('</li>\n        ');
-      }
-      __out.push('\n      </ul>\n      <ul class="col rows-');
-      __out.push(__sanitize(this.card.rows[this.card.pip][2]));
-      __out.push('">\n        ');
-      for (num = 0, _ref3 = this.card.rows[this.card.pip][2]; 0 <= _ref3 ? num < _ref3 : num > _ref3; 0 <= _ref3 ? num++ : num--) {
-        __out.push('\n          <li>');
-        __out.push(__sanitize(this.card.suit));
-        __out.push('</li>\n        ');
-      }
-      __out.push(' \n      </ul>\n    </div>\n  </div>\n  <div class="bottom">\n    <div>');
+      __out.push('\n    </div>\n  </div>\n  <div class="bottom">\n    <div>');
       __out.push(__sanitize(this.card.suit));
       __out.push('</div>\n    <div class="pip">');
       __out.push(__sanitize(this.card.pip));
