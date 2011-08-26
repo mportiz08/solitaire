@@ -11041,12 +11041,13 @@ window.jQuery = window.$ = jQuery;
   }
   return this.require.define;
 }).call(this)({"main": function(exports, require, module) {(function() {
-  var CardView, HomeView, MainRouter;
+  var Card, CardView, HomeView, MainRouter;
   window.app = {};
   app.routers = {};
   app.models = {};
   app.collections = {};
   app.views = {};
+  Card = require('models/card_model').Card;
   MainRouter = require('routers/main_router').MainRouter;
   HomeView = require('views/home_view').HomeView;
   CardView = require('views/card_view').CardView;
@@ -11054,7 +11055,9 @@ window.jQuery = window.$ = jQuery;
     app.initialize = function() {
       app.routers.main = new MainRouter();
       app.views.home = new HomeView();
-      app.views.card = new CardView();
+      app.views.card = new CardView({
+        model: new Card()
+      });
       if (Backbone.history.getFragment() === '') {
         return app.routers.main.navigate('home', true);
       }
@@ -11078,7 +11081,7 @@ window.jQuery = window.$ = jQuery;
       Card.__super__.constructor.apply(this, arguments);
     }
     Card.prototype.defaults = {
-      pip: '',
+      pip: '4',
       suit: '♠',
       color: 'b'
     };
@@ -11147,7 +11150,23 @@ window.jQuery = window.$ = jQuery;
   }
   (function() {
     (function() {
-      __out.push('<div class="top">\n  <div class="pip">4</div>\n  <div class="suite small">&#9824;</div>\n</div>\n<div class="middle">\n  <div class="suite-display">\n    <ul class="col two">\n      <li>&#9824;</li>\n      <li>&#9824;</li>\n    </ul>\n    <ul class="col"></ul>\n    <ul class="col two">\n      <li>&#9824;</li>\n      <li>&#9824;</li>\n    </ul>\n  </div>\n</div>\n<div class="bottom">\n  <div>&#9824;</div>\n  <div class="pip">4</div>\n</div>\n');
+      __out.push('<div class="top">\n  <div class="pip">');
+      __out.push(__sanitize(this.card.pip));
+      __out.push('</div>\n  <div class="suite small">');
+      __out.push(__sanitize(this.card.suit));
+      __out.push('</div>\n</div>\n<div class="middle">\n  <div class="suite-display">\n    <ul class="col two">\n      <li>');
+      __out.push(__sanitize(this.card.suit));
+      __out.push('</li>\n      <li>');
+      __out.push(__sanitize(this.card.suit));
+      __out.push('</li>\n    </ul>\n    <ul class="col"></ul>\n    <ul class="col two">\n      <li>');
+      __out.push(__sanitize(this.card.suit));
+      __out.push('</li>\n      <li>');
+      __out.push(__sanitize(this.card.suit));
+      __out.push('</li>\n    </ul>\n  </div>\n</div>\n<div class="bottom">\n  <div>');
+      __out.push(__sanitize(this.card.suit));
+      __out.push('</div>\n  <div class="pip">');
+      __out.push(__sanitize(this.card.pip));
+      __out.push('</div>\n</div>\n');
     }).call(this);
     
   }).call(__obj);
@@ -11217,7 +11236,9 @@ window.jQuery = window.$ = jQuery;
     CardView.prototype.tagName = 'div';
     CardView.prototype.className = 'card';
     CardView.prototype.render = function() {
-      $(this.el).html(cardTemplate());
+      $(this.el).html(cardTemplate({
+        card: this.model.toJSON()
+      }));
       return this;
     };
     return CardView;

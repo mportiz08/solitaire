@@ -1,21 +1,21 @@
 <div class="top">
-  <div class="pip">4</div>
-  <div class="suite small">&#9824;</div>
+  <div class="pip"><%= @card.pip %></div>
+  <div class="suite small"><%= @card.suit %></div>
 </div>
 <div class="middle">
   <div class="suite-display">
     <ul class="col two">
-      <li>&#9824;</li>
-      <li>&#9824;</li>
+      <li><%= @card.suit %></li>
+      <li><%= @card.suit %></li>
     </ul>
     <ul class="col"></ul>
     <ul class="col two">
-      <li>&#9824;</li>
-      <li>&#9824;</li>
+      <li><%= @card.suit %></li>
+      <li><%= @card.suit %></li>
     </ul>
   </div>
 </div>
 <div class="bottom">
-  <div>&#9824;</div>
-  <div class="pip">4</div>
+  <div><%= @card.suit %></div>
+  <div class="pip"><%= @card.pip %></div>
 </div>
