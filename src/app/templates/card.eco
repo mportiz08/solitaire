@@ -1,4 +1,4 @@
-<div class="color-<%= @card.color %>">
+<div class="pip-<%= @card.pip %> color-<%= @card.color %>">
   <div class="top">
     <div class="pip"><%= @card.pip %></div>
     <div class="suite small"><%= @card.suit %></div>

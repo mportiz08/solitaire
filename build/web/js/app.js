@@ -11173,7 +11173,9 @@ window.jQuery = window.$ = jQuery;
   (function() {
     (function() {
       var num, _ref, _ref2, _ref3;
-      __out.push('<div class="color-');
+      __out.push('<div class="pip-');
+      __out.push(__sanitize(this.card.pip));
+      __out.push(' color-');
       __out.push(__sanitize(this.card.color));
       __out.push('">\n  <div class="top">\n    <div class="pip">');
       __out.push(__sanitize(this.card.pip));
