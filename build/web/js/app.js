@@ -11056,7 +11056,9 @@ window.jQuery = window.$ = jQuery;
       app.routers.main = new MainRouter();
       app.views.home = new HomeView();
       app.views.card = new CardView({
-        model: new Card()
+        model: new Card({
+          color: 'r'
+        })
       });
       if (Backbone.history.getFragment() === '') {
         return app.routers.main.navigate('home', true);
@@ -11150,23 +11152,25 @@ window.jQuery = window.$ = jQuery;
   }
   (function() {
     (function() {
-      __out.push('<div class="top">\n  <div class="pip">');
+      __out.push('<div class="color-');
+      __out.push(__sanitize(this.card.color));
+      __out.push('">\n  <div class="top">\n    <div class="pip">');
       __out.push(__sanitize(this.card.pip));
-      __out.push('</div>\n  <div class="suite small">');
+      __out.push('</div>\n    <div class="suite small">');
       __out.push(__sanitize(this.card.suit));
-      __out.push('</div>\n</div>\n<div class="middle">\n  <div class="suite-display">\n    <ul class="col two">\n      <li>');
+      __out.push('</div>\n  </div>\n  <div class="middle">\n    <div class="suite-display">\n      <ul class="col two">\n        <li>');
       __out.push(__sanitize(this.card.suit));
-      __out.push('</li>\n      <li>');
+      __out.push('</li>\n        <li>');
       __out.push(__sanitize(this.card.suit));
-      __out.push('</li>\n    </ul>\n    <ul class="col"></ul>\n    <ul class="col two">\n      <li>');
+      __out.push('</li>\n      </ul>\n      <ul class="col"></ul>\n      <ul class="col two">\n        <li>');
       __out.push(__sanitize(this.card.suit));
-      __out.push('</li>\n      <li>');
+      __out.push('</li>\n        <li>');
       __out.push(__sanitize(this.card.suit));
-      __out.push('</li>\n    </ul>\n  </div>\n</div>\n<div class="bottom">\n  <div>');
+      __out.push('</li>\n      </ul>\n    </div>\n  </div>\n  <div class="bottom">\n    <div>');
       __out.push(__sanitize(this.card.suit));
-      __out.push('</div>\n  <div class="pip">');
+      __out.push('</div>\n    <div class="pip">');
       __out.push(__sanitize(this.card.pip));
-      __out.push('</div>\n</div>\n');
+      __out.push('</div>\n  </div>\n</div>\n');
     }).call(this);
     
   }).call(__obj);
