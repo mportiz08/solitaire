@@ -5,14 +5,20 @@
   </div>
   <div class="middle">
     <div class="suite-display">
-      <ul class="col two">
-        <li><%= @card.suit %></li>
-        <li><%= @card.suit %></li>
+      <ul class="col rows-<%= @card.rows[@card.pip][0] %>">
+        <% for num in [0...@card.rows[@card.pip][0]]: %>
+          <li><%= @card.suit %></li>
+        <% end %>
       </ul>
-      <ul class="col"></ul>
-      <ul class="col two">
-        <li><%= @card.suit %></li>
-        <li><%= @card.suit %></li>
+      <ul class="col rows-<%= @card.rows[@card.pip][1] %>">
+        <% for num in [0...@card.rows[@card.pip][1]]: %>
+          <li><%= @card.suit %></li>
+        <% end %>
+      </ul>
+      <ul class="col rows-<%= @card.rows[@card.pip][2] %>">
+        <% for num in [0...@card.rows[@card.pip][2]]: %>
+          <li><%= @card.suit %></li>
+        <% end %> 
       </ul>
     </div>
   </div>
