@@ -16,7 +16,7 @@ h4{font-size:18px}
 hr{margin:25px 0}
 .color-b{color:#000}
 .color-r{color:#980000}
-div.card{background:#fff;border-radius:5px;cursor:pointer;display:inline-block;height:150px;margin:25px;position:relative;width:100px}
+div.card{background:#fff;border:1px solid #000;border-radius:5px;cursor:pointer;display:inline-block;height:150px;margin:25px;position:relative;width:100px}
 div.card .top{left:5px;position:absolute;top:5px}
 div.card .middle{height:130px;margin:0 15px;position:relative;top:10px}
 div.card .middle .suit-display{height:100%;margin:0 auto;position:relative;text-align:center}
