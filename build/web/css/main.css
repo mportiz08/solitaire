@@ -42,6 +42,9 @@ div.card .pip-K.suit-diamonds .suit-display{background:url("../images/kd.png") n
 div.card .pip-J.suit-hearts .suit-display{background:url("../images/jh.png") no-repeat center center}
 div.card .pip-Q.suit-hearts .suit-display{background:url("../images/qh.png") no-repeat center center}
 div.card .pip-K.suit-hearts .suit-display{background:url("../images/kh.png") no-repeat center center}
+div.card .pip-J.suit-spades .suit-display{background:url("../images/js.png") no-repeat center center}
+div.card .pip-Q.suit-spades .suit-display{background:url("../images/qs.png") no-repeat center center}
+div.card .pip-K.suit-spades .suit-display{background:url("../images/ks.png") no-repeat center center}
 div.card .bottom{bottom:5px;position:absolute;right:5px;text-align:right}
 div.card .suit{vertical-align:middle}
 div.card .suit.large{font-size:32px;padding:0 5px}
