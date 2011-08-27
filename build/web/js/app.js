@@ -11079,16 +11079,148 @@ window.jQuery = window.$ = jQuery;
     app.initialize = function() {
       app.collections.deck = new Deck([
         new Card({
-          pip: 'A',
+          pip: '2',
           suit: '♣'
         }), new Card({
-          pip: 'A',
+          pip: '2',
           suit: '♦'
         }), new Card({
-          pip: 'A',
+          pip: '2',
           suit: '♥'
         }), new Card({
-          pip: 'A',
+          pip: '2',
+          suit: '♠'
+        }), new Card({
+          pip: '3',
+          suit: '♣'
+        }), new Card({
+          pip: '3',
+          suit: '♦'
+        }), new Card({
+          pip: '3',
+          suit: '♥'
+        }), new Card({
+          pip: '3',
+          suit: '♠'
+        }), new Card({
+          pip: '4',
+          suit: '♣'
+        }), new Card({
+          pip: '4',
+          suit: '♦'
+        }), new Card({
+          pip: '4',
+          suit: '♥'
+        }), new Card({
+          pip: '4',
+          suit: '♠'
+        }), new Card({
+          pip: '5',
+          suit: '♣'
+        }), new Card({
+          pip: '5',
+          suit: '♦'
+        }), new Card({
+          pip: '5',
+          suit: '♥'
+        }), new Card({
+          pip: '5',
+          suit: '♠'
+        }), new Card({
+          pip: '6',
+          suit: '♣'
+        }), new Card({
+          pip: '6',
+          suit: '♦'
+        }), new Card({
+          pip: '6',
+          suit: '♥'
+        }), new Card({
+          pip: '6',
+          suit: '♠'
+        }), new Card({
+          pip: '7',
+          suit: '♣'
+        }), new Card({
+          pip: '7',
+          suit: '♦'
+        }), new Card({
+          pip: '7',
+          suit: '♥'
+        }), new Card({
+          pip: '7',
+          suit: '♠'
+        }), new Card({
+          pip: '8',
+          suit: '♣'
+        }), new Card({
+          pip: '8',
+          suit: '♦'
+        }), new Card({
+          pip: '8',
+          suit: '♥'
+        }), new Card({
+          pip: '8',
+          suit: '♠'
+        }), new Card({
+          pip: '9',
+          suit: '♣'
+        }), new Card({
+          pip: '9',
+          suit: '♦'
+        }), new Card({
+          pip: '9',
+          suit: '♥'
+        }), new Card({
+          pip: '9',
+          suit: '♠'
+        }), new Card({
+          pip: '10',
+          suit: '♣'
+        }), new Card({
+          pip: '10',
+          suit: '♦'
+        }), new Card({
+          pip: '10',
+          suit: '♥'
+        }), new Card({
+          pip: '10',
+          suit: '♠'
+        }), new Card({
+          pip: 'J',
+          suit: '♣'
+        }), new Card({
+          pip: 'J',
+          suit: '♦'
+        }), new Card({
+          pip: 'J',
+          suit: '♥'
+        }), new Card({
+          pip: 'J',
+          suit: '♠'
+        }), new Card({
+          pip: 'Q',
+          suit: '♣'
+        }), new Card({
+          pip: 'Q',
+          suit: '♦'
+        }), new Card({
+          pip: 'Q',
+          suit: '♥'
+        }), new Card({
+          pip: 'Q',
+          suit: '♠'
+        }), new Card({
+          pip: 'K',
+          suit: '♣'
+        }), new Card({
+          pip: 'K',
+          suit: '♦'
+        }), new Card({
+          pip: 'K',
+          suit: '♥'
+        }), new Card({
+          pip: 'K',
           suit: '♠'
         })
       ]);

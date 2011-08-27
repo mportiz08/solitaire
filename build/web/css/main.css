@@ -16,7 +16,7 @@ h4{font-size:18px}
 hr{margin:25px 0}
 .color-b{color:#000}
 .color-r{color:#980000}
-div.card{background:#fff;border-radius:5px;cursor:pointer;display:inline-block;height:150px;margin:0 25px;position:relative;width:100px}
+div.card{background:#fff;border-radius:5px;cursor:pointer;display:inline-block;height:150px;margin:25px;position:relative;width:100px}
 div.card .top{left:5px;position:absolute;top:5px}
 div.card .middle{height:130px;margin:0 15px;position:relative;top:10px}
 div.card .middle .suit-display{height:100%;margin:0 auto;position:relative;text-align:center}
@@ -48,4 +48,4 @@ div.card .pip-K.suit-spades .suit-display{background:url("../images/ks.png") no-
 div.card .bottom{bottom:5px;position:absolute;right:5px;text-align:right}
 div.card .suit{vertical-align:middle}
 div.card .suit.large{font-size:32px;padding:0 5px}
-#deck{padding-top:25px}
+#deck{margin:0 auto;position:relative;width:960px}
