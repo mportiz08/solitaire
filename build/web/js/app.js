@@ -11040,7 +11040,27 @@ window.jQuery = window.$ = jQuery;
     };
   }
   return this.require.define;
-}).call(this)({"main": function(exports, require, module) {(function() {
+}).call(this)({"collections/deck_collection": function(exports, require, module) {(function() {
+  var Card;
+  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
+    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor;
+    child.__super__ = parent.prototype;
+    return child;
+  };
+  Card = require('models/card_model').Card;
+  exports.Deck = (function() {
+    __extends(Deck, Backbone.Collection);
+    function Deck() {
+      Deck.__super__.constructor.apply(this, arguments);
+    }
+    Deck.prototype.model = Card;
+    return Deck;
+  })();
+}).call(this);
+}, "main": function(exports, require, module) {(function() {
   var Card, CardView, HomeView, MainRouter;
   window.app = {};
   app.routers = {};
