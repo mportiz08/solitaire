@@ -3,12 +3,16 @@ class exports.Card extends Backbone.Model
     pip:   'A'
     suit:  '♠'
     color: 'b'
-    suits: 
+  
+  suits: ->
+    suits =
       clubs:    '♣'
       diamonds: '♦'
       hearts:   '♥'
       spades:   '♠'
-    rows:
+      
+  rows: ->
+    rows =
        'A':  [0, 0, 0]
        '2':  [0, 2, 0]
        '3':  [0, 3, 0]
@@ -22,6 +26,4 @@ class exports.Card extends Backbone.Model
        'J':  [1, 0, 1]
        'Q':  [1, 0, 1]
        'K':  [1, 0, 1]
-      
-  blah: ->
-    @get('rows')[@get('pip')][0]
+    rows[@get('pip')]

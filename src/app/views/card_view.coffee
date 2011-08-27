@@ -5,5 +5,5 @@ class exports.CardView extends Backbone.View
   className: 'card'
 
   render: ->
-    $(@el).html cardTemplate(card: @model.toJSON())
+    $(@el).html cardTemplate(card: @model)
     @

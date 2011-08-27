@@ -11086,14 +11086,20 @@ window.jQuery = window.$ = jQuery;
     Card.prototype.defaults = {
       pip: 'A',
       suit: '♠',
-      color: 'b',
-      suits: {
+      color: 'b'
+    };
+    Card.prototype.suits = function() {
+      var suits;
+      return suits = {
         clubs: '♣',
         diamonds: '♦',
         hearts: '♥',
         spades: '♠'
-      },
-      rows: {
+      };
+    };
+    Card.prototype.rows = function() {
+      var rows;
+      rows = {
         'A': [0, 0, 0],
         '2': [0, 2, 0],
         '3': [0, 3, 0],
@@ -11107,10 +11113,8 @@ window.jQuery = window.$ = jQuery;
         'J': [1, 0, 1],
         'Q': [1, 0, 1],
         'K': [1, 0, 1]
-      }
-    };
-    Card.prototype.blah = function() {
-      return this.get('rows')[this.get('pip')][0];
+      };
+      return rows[this.get('pip')];
     };
     return Card;
   })();
@@ -11179,49 +11183,49 @@ window.jQuery = window.$ = jQuery;
     (function() {
       var num, _ref, _ref2, _ref3;
       __out.push('<div class="pip-');
-      __out.push(__sanitize(this.card.pip));
+      __out.push(__sanitize(this.card.get('pip')));
       __out.push(' color-');
-      __out.push(__sanitize(this.card.color));
+      __out.push(__sanitize(this.card.get('color')));
       __out.push('">\n  <div class="top">\n    <div class="pip">');
-      __out.push(__sanitize(this.card.pip));
+      __out.push(__sanitize(this.card.get('pip')));
       __out.push('</div>\n    <div class="suit small">');
-      __out.push(__sanitize(this.card.suit));
+      __out.push(__sanitize(this.card.get('suit')));
       __out.push('</div>\n  </div>\n  <div class="middle">\n    <div class="suit-display">\n      ');
-      if (this.card.pip === 'A') {
+      if (this.card.get('pip' === 'A')) {
         __out.push('\n        <div class="suit large">');
-        __out.push(__sanitize(this.card.suit));
+        __out.push(__sanitize(this.card.get('suit')));
         __out.push('</div>\n      ');
       } else {
         __out.push('\n        <ul class="col rows-');
-        __out.push(__sanitize(this.card.rows[this.card.pip][0]));
+        __out.push(__sanitize(this.card.rows()[0]));
         __out.push('">\n          ');
-        for (num = 0, _ref = this.card.rows[this.card.pip][0]; 0 <= _ref ? num < _ref : num > _ref; 0 <= _ref ? num++ : num--) {
+        for (num = 0, _ref = this.card.rows()[0]; 0 <= _ref ? num < _ref : num > _ref; 0 <= _ref ? num++ : num--) {
           __out.push('\n            <li>');
-          __out.push(__sanitize(this.card.suit));
+          __out.push(__sanitize(this.card.get('suit')));
           __out.push('</li>\n          ');
         }
         __out.push('\n        </ul>\n        <ul class="col rows-');
-        __out.push(__sanitize(this.card.rows[this.card.pip][1]));
+        __out.push(__sanitize(this.card.rows()[1]));
         __out.push('">\n          ');
-        for (num = 0, _ref2 = this.card.rows[this.card.pip][1]; 0 <= _ref2 ? num < _ref2 : num > _ref2; 0 <= _ref2 ? num++ : num--) {
+        for (num = 0, _ref2 = this.card.rows()[1]; 0 <= _ref2 ? num < _ref2 : num > _ref2; 0 <= _ref2 ? num++ : num--) {
           __out.push('\n            <li>');
-          __out.push(__sanitize(this.card.suit));
+          __out.push(__sanitize(this.card.get('suit')));
           __out.push('</li>\n          ');
         }
         __out.push('\n        </ul>\n        <ul class="col rows-');
-        __out.push(__sanitize(this.card.rows[this.card.pip][2]));
+        __out.push(__sanitize(this.card.rows()[2]));
         __out.push('">\n          ');
-        for (num = 0, _ref3 = this.card.rows[this.card.pip][2]; 0 <= _ref3 ? num < _ref3 : num > _ref3; 0 <= _ref3 ? num++ : num--) {
+        for (num = 0, _ref3 = this.card.rows()[2]; 0 <= _ref3 ? num < _ref3 : num > _ref3; 0 <= _ref3 ? num++ : num--) {
           __out.push('\n            <li>');
-          __out.push(__sanitize(this.card.suit));
+          __out.push(__sanitize(this.card.get('suit')));
           __out.push('</li>\n          ');
         }
         __out.push(' \n        </ul>\n      ');
       }
       __out.push('\n    </div>\n  </div>\n  <div class="bottom">\n    <div>');
-      __out.push(__sanitize(this.card.suit));
+      __out.push(__sanitize(this.card.get('suit')));
       __out.push('</div>\n    <div class="pip">');
-      __out.push(__sanitize(this.card.pip));
+      __out.push(__sanitize(this.card.get('pip')));
       __out.push('</div>\n  </div>\n</div>\n');
     }).call(this);
     
@@ -11293,7 +11297,7 @@ window.jQuery = window.$ = jQuery;
     CardView.prototype.className = 'card';
     CardView.prototype.render = function() {
       $(this.el).html(cardTemplate({
-        card: this.model.toJSON()
+        card: this.model
       }));
       return this;
     };
