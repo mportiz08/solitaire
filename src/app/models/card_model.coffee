@@ -2,14 +2,22 @@ class exports.Card extends Backbone.Model
   defaults:
     pip:   'A'
     suit:  '♠'
-    color: 'b'
   
-  suits: ->
+  suit_name: ->
     suits =
       '♣': 'clubs'
       '♦': 'diamonds'
       '♥': 'hearts'
       '♠': 'spades'
+    suits[@get('suit')]
+  
+  color: ->
+    suits =
+      '♣': 'b'
+      '♦': 'r'
+      '♥': 'r'
+      '♠': 'b'
+    suits[@get('suit')]
       
   rows: ->
     rows =

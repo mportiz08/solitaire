@@ -1,4 +1,4 @@
-<div class="pip-<%= @card.get 'pip' %> suit-<%= @card.suits()[@card.get('suit')] %> color-<%= @card.get 'color' %>">
+<div class="pip-<%= @card.get 'pip' %> suit-<%= @card.suit_name() %> color-<%= @card.color() %>">
   <div class="top">
     <div class="pip"><%= @card.get 'pip' %></div>
     <div class="suit small"><%= @card.get 'suit' %></div>

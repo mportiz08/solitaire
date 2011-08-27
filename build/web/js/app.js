@@ -11058,7 +11058,7 @@ window.jQuery = window.$ = jQuery;
       app.views.card = new CardView({
         model: new Card({
           pip: 'K',
-          suit: '♣'
+          suit: '♦'
         })
       });
       if (Backbone.history.getFragment() === '') {
@@ -11085,17 +11085,27 @@ window.jQuery = window.$ = jQuery;
     }
     Card.prototype.defaults = {
       pip: 'A',
-      suit: '♠',
-      color: 'b'
+      suit: '♠'
     };
-    Card.prototype.suits = function() {
+    Card.prototype.suit_name = function() {
       var suits;
-      return suits = {
+      suits = {
         '♣': 'clubs',
         '♦': 'diamonds',
         '♥': 'hearts',
         '♠': 'spades'
       };
+      return suits[this.get('suit')];
+    };
+    Card.prototype.color = function() {
+      var suits;
+      suits = {
+        '♣': 'b',
+        '♦': 'r',
+        '♥': 'r',
+        '♠': 'b'
+      };
+      return suits[this.get('suit')];
     };
     Card.prototype.rows = function() {
       var rows;
@@ -11185,9 +11195,9 @@ window.jQuery = window.$ = jQuery;
       __out.push('<div class="pip-');
       __out.push(__sanitize(this.card.get('pip')));
       __out.push(' suit-');
-      __out.push(__sanitize(this.card.suits()[this.card.get('suit')]));
+      __out.push(__sanitize(this.card.suit_name()));
       __out.push(' color-');
-      __out.push(__sanitize(this.card.get('color')));
+      __out.push(__sanitize(this.card.color()));
       __out.push('">\n  <div class="top">\n    <div class="pip">');
       __out.push(__sanitize(this.card.get('pip')));
       __out.push('</div>\n    <div class="suit small">');
