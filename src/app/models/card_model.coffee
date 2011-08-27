@@ -6,10 +6,10 @@ class exports.Card extends Backbone.Model
   
   suits: ->
     suits =
-      clubs:    '♣'
-      diamonds: '♦'
-      hearts:   '♥'
-      spades:   '♠'
+      '♣': 'clubs'
+      '♦': 'diamonds'
+      '♥': 'hearts'
+      '♠': 'spades'
       
   rows: ->
     rows =
@@ -23,7 +23,7 @@ class exports.Card extends Backbone.Model
        '8':  [3, 2, 3]
        '9':  [4, 1, 4]
        '10': [4, 2, 4]
-       'J':  [1, 0, 1]
-       'Q':  [1, 0, 1]
-       'K':  [1, 0, 1]
+       'J':  [0, 0, 0]
+       'Q':  [0, 0, 0]
+       'K':  [0, 0, 0]
     rows[@get('pip')]

@@ -11057,7 +11057,7 @@ window.jQuery = window.$ = jQuery;
       app.views.home = new HomeView();
       app.views.card = new CardView({
         model: new Card({
-          pip: '3',
+          pip: 'J',
           suit: '♣'
         })
       });
@@ -11091,10 +11091,10 @@ window.jQuery = window.$ = jQuery;
     Card.prototype.suits = function() {
       var suits;
       return suits = {
-        clubs: '♣',
-        diamonds: '♦',
-        hearts: '♥',
-        spades: '♠'
+        '♣': 'clubs',
+        '♦': 'diamonds',
+        '♥': 'hearts',
+        '♠': 'spades'
       };
     };
     Card.prototype.rows = function() {
@@ -11110,9 +11110,9 @@ window.jQuery = window.$ = jQuery;
         '8': [3, 2, 3],
         '9': [4, 1, 4],
         '10': [4, 2, 4],
-        'J': [1, 0, 1],
-        'Q': [1, 0, 1],
-        'K': [1, 0, 1]
+        'J': [0, 0, 0],
+        'Q': [0, 0, 0],
+        'K': [0, 0, 0]
       };
       return rows[this.get('pip')];
     };
@@ -11184,6 +11184,8 @@ window.jQuery = window.$ = jQuery;
       var num, _ref, _ref2, _ref3;
       __out.push('<div class="pip-');
       __out.push(__sanitize(this.card.get('pip')));
+      __out.push(' suit-');
+      __out.push(__sanitize(this.card.suits()[this.card.get('suit')]));
       __out.push(' color-');
       __out.push(__sanitize(this.card.get('color')));
       __out.push('">\n  <div class="top">\n    <div class="pip">');
@@ -11191,7 +11193,7 @@ window.jQuery = window.$ = jQuery;
       __out.push('</div>\n    <div class="suit small">');
       __out.push(__sanitize(this.card.get('suit')));
       __out.push('</div>\n  </div>\n  <div class="middle">\n    <div class="suit-display">\n      ');
-      if (this.card.get('pip' === 'A')) {
+      if (this.card.get('pip') === 'A') {
         __out.push('\n        <div class="suit large">');
         __out.push(__sanitize(this.card.get('suit')));
         __out.push('</div>\n      ');
