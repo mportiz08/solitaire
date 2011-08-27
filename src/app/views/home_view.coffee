@@ -5,5 +5,4 @@ class exports.HomeView extends Backbone.View
 
   render: ->
     $(@el).html homeTemplate()
-    $(@el).append app.views.card.render().el
     @

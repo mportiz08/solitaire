@@ -11057,29 +11057,44 @@ window.jQuery = window.$ = jQuery;
       Deck.__super__.constructor.apply(this, arguments);
     }
     Deck.prototype.model = Card;
+    Deck.prototype.url = function() {
+      return this.document.url() + '/notes';
+    };
     return Deck;
   })();
 }).call(this);
 }, "main": function(exports, require, module) {(function() {
-  var Card, CardView, HomeView, MainRouter;
+  var Card, Deck, DeckView, HomeView, MainRouter;
   window.app = {};
   app.routers = {};
   app.models = {};
   app.collections = {};
   app.views = {};
   Card = require('models/card_model').Card;
+  Deck = require('collections/deck_collection').Deck;
   MainRouter = require('routers/main_router').MainRouter;
   HomeView = require('views/home_view').HomeView;
-  CardView = require('views/card_view').CardView;
+  DeckView = require('views/deck_view').DeckView;
   $(document).ready(function() {
     app.initialize = function() {
-      app.routers.main = new MainRouter();
-      app.views.home = new HomeView();
-      app.views.card = new CardView({
-        model: new Card({
-          pip: 'K',
+      app.collections.deck = new Deck([
+        new Card({
+          pip: 'A',
+          suit: '♣'
+        }), new Card({
+          pip: 'A',
+          suit: '♦'
+        }), new Card({
+          pip: 'A',
+          suit: '♥'
+        }), new Card({
+          pip: 'A',
           suit: '♠'
         })
+      ]);
+      app.routers.main = new MainRouter();
+      app.views.deck = new DeckView({
+        collection: app.collections.deck
       });
       if (Backbone.history.getFragment() === '') {
         return app.routers.main.navigate('home', true);
@@ -11167,7 +11182,7 @@ window.jQuery = window.$ = jQuery;
       "home": "home"
     };
     MainRouter.prototype.home = function() {
-      return $('body').html(app.views.home.render().el);
+      return $('body').html(app.views.deck.render().el);
     };
     return MainRouter;
   })();
@@ -11264,6 +11279,51 @@ window.jQuery = window.$ = jQuery;
   }).call(__obj);
   __obj.safe = __objSafe, __obj.escape = __escape;
   return __out.join('');
+}}, "templates/deck": function(exports, require, module) {module.exports = function(__obj) {
+  if (!__obj) __obj = {};
+  var __out = [], __capture = function(callback) {
+    var out = __out, result;
+    __out = [];
+    callback.call(this);
+    result = __out.join('');
+    __out = out;
+    return __safe(result);
+  }, __sanitize = function(value) {
+    if (value && value.ecoSafe) {
+      return value;
+    } else if (typeof value !== 'undefined' && value != null) {
+      return __escape(value);
+    } else {
+      return '';
+    }
+  }, __safe, __objSafe = __obj.safe, __escape = __obj.escape;
+  __safe = __obj.safe = function(value) {
+    if (value && value.ecoSafe) {
+      return value;
+    } else {
+      if (!(typeof value !== 'undefined' && value != null)) value = '';
+      var result = new String(value);
+      result.ecoSafe = true;
+      return result;
+    }
+  };
+  if (!__escape) {
+    __escape = __obj.escape = function(value) {
+      return ('' + value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    };
+  }
+  (function() {
+    (function() {
+      __out.push('\n');
+    }).call(this);
+    
+  }).call(__obj);
+  __obj.safe = __objSafe, __obj.escape = __escape;
+  return __out.join('');
 }}, "templates/home": function(exports, require, module) {module.exports = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
@@ -11336,6 +11396,39 @@ window.jQuery = window.$ = jQuery;
     return CardView;
   })();
 }).call(this);
+}, "views/deck_view": function(exports, require, module) {(function() {
+  var CardView, deckTemplate;
+  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
+    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor;
+    child.__super__ = parent.prototype;
+    return child;
+  };
+  deckTemplate = require('templates/deck');
+  CardView = require('views/card_view').CardView;
+  exports.DeckView = (function() {
+    __extends(DeckView, Backbone.View);
+    function DeckView() {
+      DeckView.__super__.constructor.apply(this, arguments);
+    }
+    DeckView.prototype.id = 'deck';
+    DeckView.prototype.render = function() {
+      var card, _i, _len, _ref;
+      $(this.el).html(deckTemplate());
+      _ref = this.collection.models;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        card = _ref[_i];
+        $(this.el).append((new CardView({
+          model: card
+        })).render().el);
+      }
+      return this;
+    };
+    return DeckView;
+  })();
+}).call(this);
 }, "views/home_view": function(exports, require, module) {(function() {
   var homeTemplate;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
@@ -11355,7 +11448,6 @@ window.jQuery = window.$ = jQuery;
     HomeView.prototype.id = 'container';
     HomeView.prototype.render = function() {
       $(this.el).html(homeTemplate());
-      $(this.el).append(app.views.card.render().el);
       return this;
     };
     return HomeView;
