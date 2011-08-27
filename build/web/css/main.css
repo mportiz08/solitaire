@@ -34,6 +34,8 @@ div.card .pip-7 ul.col.rows-1 li{padding-top:24px}
 div.card .pip-8 ul.col.rows-2 li:first-child,div.card .pip-10 ul.col.rows-2 li:first-child{padding:24px 0 0 0}
 div.card .pip-8 ul.col.rows-2 li:last-child,div.card .pip-10 ul.col.rows-2 li:last-child{padding-top:24px}
 div.card .pip-J.suit-clubs .suit-display{background:url("../images/jc.png") no-repeat center center}
+div.card .pip-Q.suit-clubs .suit-display{background:url("../images/qc.png") no-repeat center center}
+div.card .pip-K.suit-clubs .suit-display{background:url("../images/kc.png") no-repeat center center}
 div.card .bottom{bottom:5px;position:absolute;right:5px;text-align:right}
 div.card .suit{vertical-align:middle}
 div.card .suit.large{font-size:32px;padding:0 5px}

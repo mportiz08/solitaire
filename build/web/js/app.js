@@ -11057,7 +11057,7 @@ window.jQuery = window.$ = jQuery;
       app.views.home = new HomeView();
       app.views.card = new CardView({
         model: new Card({
-          pip: 'J',
+          pip: 'K',
           suit: '♣'
         })
       });
