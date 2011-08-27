@@ -11058,7 +11058,7 @@ window.jQuery = window.$ = jQuery;
       app.views.card = new CardView({
         model: new Card({
           pip: 'K',
-          suit: '♦'
+          suit: '♥'
         })
       });
       if (Backbone.history.getFragment() === '') {
