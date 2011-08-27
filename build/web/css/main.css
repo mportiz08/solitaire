@@ -7,7 +7,7 @@ blockquote:before,blockquote:after,q:before,q:after{content:none}
 ins{text-decoration:none}
 del{text-decoration:line-through}
 table{border-collapse:collapse;border-spacing:0}
-html,body{background:#2d5444;color:#000;font-family:"Helvetica Nueue",Helvetica,arial,sans-serif;height:100%}
+html,body{background:#2d5444;background:url("../images/bg.png");color:#000;font-family:"Helvetica Nueue",Helvetica,arial,sans-serif;height:100%}
 a,a:visited,a:active,a:hover{color:#000}
 h1{font-size:56px}
 h2{font-size:32px}
