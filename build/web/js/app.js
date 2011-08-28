@@ -11370,6 +11370,18 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       };
       app.collections.deck = new Deck(app.functions.shuffle([
         new Card({
+          pip: 'A',
+          suit: '♣'
+        }), new Card({
+          pip: 'A',
+          suit: '♦'
+        }), new Card({
+          pip: 'A',
+          suit: '♥'
+        }), new Card({
+          pip: 'A',
+          suit: '♠'
+        }), new Card({
           pip: '2',
           suit: '♣'
         }), new Card({
@@ -11741,7 +11753,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
   }
   (function() {
     (function() {
-      __out.push('\n');
+      __out.push('<div class="deck pile"></div>\n<div class="one pile"></div>\n<div class="two pile"></div>\n<div class="three pile"></div>\n<div class="four pile"></div>\n<div class="five pile"></div>\n<div class="six pile"></div>\n<div class="seven pile"></div>\n');
     }).call(this);
     
   }).call(__obj);
@@ -11814,9 +11826,6 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       $(this.el).html(cardTemplate({
         card: this.model
       }));
-      $(this.el).draggable({
-        stack: this.el
-      });
       return this;
     };
     return CardView;
@@ -11831,7 +11840,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
     child.prototype = new ctor;
     child.__super__ = parent.prototype;
     return child;
-  }, __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  };
   deckTemplate = require('templates/deck');
   CardView = require('views/card_view').CardView;
   exports.DeckView = (function() {
@@ -11839,14 +11848,66 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
     function DeckView() {
       DeckView.__super__.constructor.apply(this, arguments);
     }
-    DeckView.prototype.id = 'deck';
+    DeckView.prototype.id = 'container';
     DeckView.prototype.render = function() {
+      var card, deck_pile, pile_1, pile_2, pile_3, pile_4, pile_5, pile_6, pile_7, _i, _j, _k, _l, _len, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p;
       $(this.el).html(deckTemplate());
-      this.collection.each(__bind(function(card) {
-        return $(this.el).append((new CardView({
+      deck_pile = this.collection.models.slice(0, 24);
+      pile_1 = this.collection.models.slice(24, 25);
+      pile_2 = this.collection.models.slice(25, 27);
+      pile_3 = this.collection.models.slice(27, 30);
+      pile_4 = this.collection.models.slice(30, 34);
+      pile_5 = this.collection.models.slice(34, 39);
+      pile_6 = this.collection.models.slice(39, 45);
+      pile_7 = this.collection.models.slice(45, 52);
+      for (_i = 0, _len = deck_pile.length; _i < _len; _i++) {
+        card = deck_pile[_i];
+        $(this.el).find('.deck.pile').append((new CardView({
           model: card
         })).render().el);
-      }, this));
+      }
+      for (_j = 0, _len2 = pile_1.length; _j < _len2; _j++) {
+        card = pile_1[_j];
+        $(this.el).find('.one.pile').append((new CardView({
+          model: card
+        })).render().el);
+      }
+      for (_k = 0, _len3 = pile_2.length; _k < _len3; _k++) {
+        card = pile_2[_k];
+        $(this.el).find('.two.pile').append((new CardView({
+          model: card
+        })).render().el);
+      }
+      for (_l = 0, _len4 = pile_3.length; _l < _len4; _l++) {
+        card = pile_3[_l];
+        $(this.el).find('.three.pile').append((new CardView({
+          model: card
+        })).render().el);
+      }
+      for (_m = 0, _len5 = pile_4.length; _m < _len5; _m++) {
+        card = pile_4[_m];
+        $(this.el).find('.four.pile').append((new CardView({
+          model: card
+        })).render().el);
+      }
+      for (_n = 0, _len6 = pile_5.length; _n < _len6; _n++) {
+        card = pile_5[_n];
+        $(this.el).find('.five.pile').append((new CardView({
+          model: card
+        })).render().el);
+      }
+      for (_o = 0, _len7 = pile_6.length; _o < _len7; _o++) {
+        card = pile_6[_o];
+        $(this.el).find('.six.pile').append((new CardView({
+          model: card
+        })).render().el);
+      }
+      for (_p = 0, _len8 = pile_7.length; _p < _len8; _p++) {
+        card = pile_7[_p];
+        $(this.el).find('.seven.pile').append((new CardView({
+          model: card
+        })).render().el);
+      }
       return this;
     };
     return DeckView;

@@ -27,10 +27,10 @@ $(document).ready ->
       shuffled
     
     app.collections.deck = new Deck(app.functions.shuffle [
-      #new Card(pip: 'A', suit: '♣')
-      #new Card(pip: 'A', suit: '♦')
-      #new Card(pip: 'A', suit: '♥')
-      #new Card(pip: 'A', suit: '♠')
+      new Card(pip: 'A', suit: '♣')
+      new Card(pip: 'A', suit: '♦')
+      new Card(pip: 'A', suit: '♥')
+      new Card(pip: 'A', suit: '♠')
       new Card(pip: '2', suit: '♣')
       new Card(pip: '2', suit: '♦')
       new Card(pip: '2', suit: '♥')
