@@ -6,5 +6,5 @@ class exports.DeckView extends Backbone.View
   
   render: ->
     $(@el).html deckTemplate()
-    $(@el).append((new CardView(model: card)).render().el) for card in @collection.models
+    @collection.each (card) => $(@el).append((new CardView(model: card)).render().el)
     @

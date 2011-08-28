@@ -1,6 +1,7 @@
 window.app = {}
 app.routers = {}
 app.models = {}
+app.functions = {}
 app.collections = {}
 app.views = {}
 
@@ -13,7 +14,19 @@ DeckView = require('views/deck_view').DeckView
 # app bootstrapping on document ready
 $(document).ready ->
   app.initialize = ->
-    app.collections.deck = new Deck([
+    app.functions.shuffle = (obj) ->
+      shuffled = []
+      rand = null
+      _.each obj, (value, index, list) ->
+        if index == 0
+          shuffled[0] = value
+        else
+          rand = Math.floor(Math.random() * (index + 1))
+          shuffled[index] = shuffled[rand]
+          shuffled[rand] = value
+      shuffled
+    
+    app.collections.deck = new Deck(app.functions.shuffle [
       #new Card(pip: 'A', suit: '♣')
       #new Card(pip: 'A', suit: '♦')
       #new Card(pip: 'A', suit: '♥')
