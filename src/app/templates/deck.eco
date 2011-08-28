@@ -1,8 +1,18 @@
-<div class="deck pile"></div>
-<div class="one pile"></div>
-<div class="two pile"></div>
-<div class="three pile"></div>
-<div class="four pile"></div>
-<div class="five pile"></div>
-<div class="six pile"></div>
-<div class="seven pile"></div>
+<div class="wrapper top">
+  <div class="deck pile"></div>
+  <div class="empty pile"></div>
+  <div class="empty pile"></div>
+  <div class="special pile"></div>
+  <div class="special pile"></div>
+  <div class="special pile"></div>
+  <div class="special pile"></div>
+</div>
+<div class="wrapper bottom">
+  <div class="one pile"></div>
+  <div class="two pile"></div>
+  <div class="three pile"></div>
+  <div class="four pile"></div>
+  <div class="five pile"></div>
+  <div class="six pile"></div>
+  <div class="seven pile"></div>
+</div>

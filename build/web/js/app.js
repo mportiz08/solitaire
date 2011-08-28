@@ -11753,7 +11753,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
   }
   (function() {
     (function() {
-      __out.push('<div class="deck pile"></div>\n<div class="one pile"></div>\n<div class="two pile"></div>\n<div class="three pile"></div>\n<div class="four pile"></div>\n<div class="five pile"></div>\n<div class="six pile"></div>\n<div class="seven pile"></div>\n');
+      __out.push('<div class="wrapper top">\n  <div class="deck pile"></div>\n  <div class="empty pile"></div>\n  <div class="empty pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n</div>\n<div class="wrapper bottom">\n  <div class="one pile"></div>\n  <div class="two pile"></div>\n  <div class="three pile"></div>\n  <div class="four pile"></div>\n  <div class="five pile"></div>\n  <div class="six pile"></div>\n  <div class="seven pile"></div>\n</div>\n');
     }).call(this);
     
   }).call(__obj);

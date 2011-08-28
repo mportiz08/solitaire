@@ -49,4 +49,5 @@ div.card .bottom{bottom:5px;position:absolute;right:5px;text-align:right}
 div.card .suit{vertical-align:middle}
 div.card .suit.large{font-size:32px;padding:0 5px}
 #container{margin:0 auto;padding-top:25px;position:relative;width:960px}
-.pile{height:152px;width:102px}
+.pile{display:inline-block;height:152px;margin:25px 15px;width:102px}
+.pile.special{background:#234235}
