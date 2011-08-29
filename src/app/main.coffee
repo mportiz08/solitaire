@@ -10,6 +10,7 @@ Deck = require('collections/deck_collection').Deck
 MainRouter = require('routers/main_router').MainRouter
 HomeView = require('views/home_view').HomeView
 DeckView = require('views/deck_view').DeckView
+FooterView = require('views/footer_view').FooterView
 
 # app bootstrapping on document ready
 $(document).ready ->
@@ -82,6 +83,7 @@ $(document).ready ->
     ])
     app.routers.main = new MainRouter()
     app.views.deck = new DeckView(collection: app.collections.deck)
+    app.views.footer = new FooterView()
     app.routers.main.navigate 'home', true if Backbone.history.getFragment() is ''
   app.initialize()
   Backbone.history.start()

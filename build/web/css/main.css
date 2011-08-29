@@ -8,7 +8,7 @@ ins{text-decoration:none}
 del{text-decoration:line-through}
 table{border-collapse:collapse;border-spacing:0}
 html,body{background:#2d5444;color:#000;font-family:"Helvetica Nueue",Helvetica,arial,sans-serif;height:100%}
-a,a:visited,a:active,a:hover{color:#000}
+a,a:visited,a:active,a:hover{color:#fff}
 h1{font-size:56px}
 h2{font-size:32px}
 h3{font-size:28px}
@@ -51,3 +51,5 @@ div.card .suit.large{font-size:32px;padding:0 5px}
 #container{margin:0 auto;padding-top:25px;position:relative;width:960px}
 .pile{display:inline-block;height:152px;margin:25px 15px;width:102px}
 .pile.special{background:#234235}
+#footer{bottom:0;color:#fff;font-size:12px;padding:5px 0;position:fixed;text-align:right;width:100%}
+#footer .middle{margin:0 auto;padding:0 15px;position:relative;width:960px}

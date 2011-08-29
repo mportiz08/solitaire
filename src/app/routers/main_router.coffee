@@ -4,3 +4,4 @@ class exports.MainRouter extends Backbone.Router
 
   home: ->
     $('body').html app.views.deck.render().el
+    $('body').append app.views.footer.render().el

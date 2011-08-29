@@ -11339,7 +11339,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
   })();
 }).call(this);
 }, "main": function(exports, require, module) {(function() {
-  var Card, Deck, DeckView, HomeView, MainRouter;
+  var Card, Deck, DeckView, FooterView, HomeView, MainRouter;
   window.app = {};
   app.routers = {};
   app.models = {};
@@ -11351,6 +11351,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
   MainRouter = require('routers/main_router').MainRouter;
   HomeView = require('views/home_view').HomeView;
   DeckView = require('views/deck_view').DeckView;
+  FooterView = require('views/footer_view').FooterView;
   $(document).ready(function() {
     app.initialize = function() {
       app.functions.shuffle = function(obj) {
@@ -11531,6 +11532,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       app.views.deck = new DeckView({
         collection: app.collections.deck
       });
+      app.views.footer = new FooterView();
       if (Backbone.history.getFragment() === '') {
         return app.routers.main.navigate('home', true);
       }
@@ -11617,7 +11619,8 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       "home": "home"
     };
     MainRouter.prototype.home = function() {
-      return $('body').html(app.views.deck.render().el);
+      $('body').html(app.views.deck.render().el);
+      return $('body').append(app.views.footer.render().el);
     };
     return MainRouter;
   })();
@@ -11754,6 +11757,51 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
   (function() {
     (function() {
       __out.push('<div class="wrapper top">\n  <div class="deck pile"></div>\n  <div class="empty pile"></div>\n  <div class="empty pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n</div>\n<div class="wrapper bottom">\n  <div class="one pile"></div>\n  <div class="two pile"></div>\n  <div class="three pile"></div>\n  <div class="four pile"></div>\n  <div class="five pile"></div>\n  <div class="six pile"></div>\n  <div class="seven pile"></div>\n</div>\n');
+    }).call(this);
+    
+  }).call(__obj);
+  __obj.safe = __objSafe, __obj.escape = __escape;
+  return __out.join('');
+}}, "templates/footer": function(exports, require, module) {module.exports = function(__obj) {
+  if (!__obj) __obj = {};
+  var __out = [], __capture = function(callback) {
+    var out = __out, result;
+    __out = [];
+    callback.call(this);
+    result = __out.join('');
+    __out = out;
+    return __safe(result);
+  }, __sanitize = function(value) {
+    if (value && value.ecoSafe) {
+      return value;
+    } else if (typeof value !== 'undefined' && value != null) {
+      return __escape(value);
+    } else {
+      return '';
+    }
+  }, __safe, __objSafe = __obj.safe, __escape = __obj.escape;
+  __safe = __obj.safe = function(value) {
+    if (value && value.ecoSafe) {
+      return value;
+    } else {
+      if (!(typeof value !== 'undefined' && value != null)) value = '';
+      var result = new String(value);
+      result.ecoSafe = true;
+      return result;
+    }
+  };
+  if (!__escape) {
+    __escape = __obj.escape = function(value) {
+      return ('' + value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    };
+  }
+  (function() {
+    (function() {
+      __out.push('<div class="middle">&copy; 2011 <a href="http://marcusortiz.com">marcus ortiz</a></div>\n');
     }).call(this);
     
   }).call(__obj);
@@ -11911,6 +11959,30 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       return this;
     };
     return DeckView;
+  })();
+}).call(this);
+}, "views/footer_view": function(exports, require, module) {(function() {
+  var footerTemplate;
+  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
+    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor;
+    child.__super__ = parent.prototype;
+    return child;
+  };
+  footerTemplate = require('templates/footer');
+  exports.FooterView = (function() {
+    __extends(FooterView, Backbone.View);
+    function FooterView() {
+      FooterView.__super__.constructor.apply(this, arguments);
+    }
+    FooterView.prototype.id = 'footer';
+    FooterView.prototype.render = function() {
+      $(this.el).html(footerTemplate());
+      return this;
+    };
+    return FooterView;
   })();
 }).call(this);
 }, "views/home_view": function(exports, require, module) {(function() {
