@@ -11874,6 +11874,14 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       $(this.el).html(cardTemplate({
         card: this.model
       }));
+      $(this.el).draggable({
+        stack: this.el,
+        snap: '.pile',
+        snapMode: 'inner'
+      });
+      $(this.el).css({
+        position: 'absolute'
+      });
       return this;
     };
     return CardView;
