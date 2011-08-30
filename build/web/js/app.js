@@ -11876,8 +11876,9 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       }));
       $(this.el).draggable({
         stack: this.el,
+        revert: 'invalid',
         snap: '.pile',
-        snapMode: 'inner'
+        snapTolerance: 5
       });
       $(this.el).css({
         position: 'absolute'
@@ -11916,6 +11917,14 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       pile_5 = this.collection.models.slice(34, 39);
       pile_6 = this.collection.models.slice(39, 45);
       pile_7 = this.collection.models.slice(45, 52);
+      $(this.el).find('.pile').droppable({
+        tolerance: 'pointer',
+        drop: function(event, ui) {
+          var c;
+          c = $(ui.draggable).detach();
+          return $(this).prepend(c);
+        }
+      });
       for (_i = 0, _len = deck_pile.length; _i < _len; _i++) {
         card = deck_pile[_i];
         $(this.el).find('.deck.pile').append((new CardView({

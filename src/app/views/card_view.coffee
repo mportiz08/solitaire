@@ -6,6 +6,6 @@ class exports.CardView extends Backbone.View
 
   render: ->
     $(@el).html cardTemplate(card: @model)
-    $(@el).draggable(stack: @el, snap: '.pile', snapMode: 'inner')
+    $(@el).draggable(stack: @el, revert: 'invalid', snap: '.pile', snapTolerance: 5)
     $(@el).css position: 'absolute'
     @
