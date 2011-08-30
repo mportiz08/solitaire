@@ -17,10 +17,10 @@ class exports.DeckView extends Backbone.View
     pile_7 = @collection.models[45..51]
     
     $(@el).find('.pile').droppable({
-      tolerance: 'pointer'
       drop: (event, ui) ->
         c = $(ui.draggable).detach()
         $(this).prepend(c)
+        c.css({top: 0, left: 0})
     })
     
     $(@el).find('.deck.pile').append((new CardView(model: card)).render().el) for card in deck_pile

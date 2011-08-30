@@ -11918,11 +11918,14 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       pile_6 = this.collection.models.slice(39, 45);
       pile_7 = this.collection.models.slice(45, 52);
       $(this.el).find('.pile').droppable({
-        tolerance: 'pointer',
         drop: function(event, ui) {
           var c;
           c = $(ui.draggable).detach();
-          return $(this).prepend(c);
+          $(this).prepend(c);
+          return c.css({
+            top: 0,
+            left: 0
+          });
         }
       });
       for (_i = 0, _len = deck_pile.length; _i < _len; _i++) {
