@@ -11875,7 +11875,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
         card: this.model
       }));
       $(this.el).draggable({
-        stack: this.el,
+        stack: '.card',
         revert: 'invalid',
         snap: '.pile',
         snapTolerance: 5
