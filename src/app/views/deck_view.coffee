@@ -16,7 +16,7 @@ class exports.DeckView extends Backbone.View
     pile_6 = @collection.models[39..44]
     pile_7 = @collection.models[45..51]
     
-    $(@el).find('.pile').droppable({
+    $(@el).find('.pile').not('.empty, .deck').droppable({
       drop: (event, ui) ->
         c = $(ui.draggable).detach()
         $(this).prepend(c)

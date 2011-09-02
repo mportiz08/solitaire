@@ -11917,7 +11917,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       pile_5 = this.collection.models.slice(34, 39);
       pile_6 = this.collection.models.slice(39, 45);
       pile_7 = this.collection.models.slice(45, 52);
-      $(this.el).find('.pile').droppable({
+      $(this.el).find('.pile').not('.empty, .deck').droppable({
         drop: function(event, ui) {
           var c;
           c = $(ui.draggable).detach();
