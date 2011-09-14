@@ -11756,7 +11756,7 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
   }
   (function() {
     (function() {
-      __out.push('<div class="wrapper top">\n  <div class="deck pile"></div>\n  <div class="empty pile"></div>\n  <div class="empty pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n  <div class="special pile"></div>\n</div>\n<div class="wrapper bottom">\n  <div class="one pile"></div>\n  <div class="two pile"></div>\n  <div class="three pile"></div>\n  <div class="four pile"></div>\n  <div class="five pile"></div>\n  <div class="six pile"></div>\n  <div class="seven pile"></div>\n</div>\n');
+      __out.push('<div class="wrapper top">\n  <div class="deck pile"></div>\n  <div class="empty pile"></div>\n  <div class="empty pile"></div>\n  <div class="foundation pile"></div>\n  <div class="foundation pile"></div>\n  <div class="foundation pile"></div>\n  <div class="foundation pile"></div>\n</div>\n<div class="wrapper bottom">\n  <div class="one pile"></div>\n  <div class="two pile"></div>\n  <div class="three pile"></div>\n  <div class="four pile"></div>\n  <div class="five pile"></div>\n  <div class="six pile"></div>\n  <div class="seven pile"></div>\n</div>\n');
     }).call(this);
     
   }).call(__obj);
@@ -11878,7 +11878,13 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
         stack: '.card',
         revert: 'invalid',
         snap: '.pile',
-        snapTolerance: 5
+        snapTolerance: 5,
+        start: function(event, ui) {
+          return $('.foundation.pile').droppable('option', 'disabled', false);
+        },
+        stop: function(event, ui) {
+          return $('.foundation.pile').droppable('option', 'disabled', true);
+        }
       });
       $(this.el).css({
         position: 'absolute'
@@ -11906,8 +11912,11 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       DeckView.__super__.constructor.apply(this, arguments);
     }
     DeckView.prototype.id = 'container';
+    DeckView.prototype.events = {
+      'pile.addCard': 'addToPile'
+    };
     DeckView.prototype.render = function() {
-      var card, deck_pile, pile_1, pile_2, pile_3, pile_4, pile_5, pile_6, pile_7, _i, _j, _k, _l, _len, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p;
+      var card, deck_pile, pile_1, pile_2, pile_3, pile_4, pile_5, pile_6, pile_7, that, _i, _j, _k, _l, _len, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p;
       $(this.el).html(deckTemplate());
       deck_pile = this.collection.models.slice(0, 24);
       pile_1 = this.collection.models.slice(24, 25);
@@ -11917,15 +11926,16 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
       pile_5 = this.collection.models.slice(34, 39);
       pile_6 = this.collection.models.slice(39, 45);
       pile_7 = this.collection.models.slice(45, 52);
-      $(this.el).find('.pile').not('.empty, .deck').droppable({
+      that = this;
+      $(this.el).find('.pile').not('.empty, .deck, .foundation').droppable({
         drop: function(event, ui) {
-          var c;
-          c = $(ui.draggable).detach();
-          $(this).prepend(c);
-          return c.css({
-            top: 0,
-            left: 0
-          });
+          return that.addToPile(this, ui);
+        }
+      });
+      $(this.el).find('.foundation.pile').droppable({
+        disabled: true,
+        drop: function(event, ui) {
+          return that.addToPile(this, ui);
         }
       });
       for (_i = 0, _len = deck_pile.length; _i < _len; _i++) {
@@ -11977,6 +11987,15 @@ _uiHash:function(a){var b=a||this;return{helper:b.helper,placeholder:b.placehold
         })).render().el);
       }
       return this;
+    };
+    DeckView.prototype.addToPile = function(pile, ui) {
+      var c;
+      c = $(ui.draggable).detach();
+      $(pile).prepend(c);
+      return c.css({
+        top: 0,
+        left: 0
+      });
     };
     return DeckView;
   })();

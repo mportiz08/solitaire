@@ -50,6 +50,6 @@ div.card .suit{vertical-align:middle}
 div.card .suit.large{font-size:32px;padding:0 5px}
 #container{margin:0 auto;padding-top:25px;position:relative;width:960px}
 .pile{display:inline-block;height:152px;margin:25px 15px;position:relative;width:102px}
-.pile.special{background:#234235}
+.pile.foundation{background:#234235}
 #footer{bottom:0;color:#fff;font-size:12px;padding:5px 0;position:fixed;text-align:right;width:100%}
 #footer .middle{margin:0 auto;padding:0 15px;position:relative;width:960px}

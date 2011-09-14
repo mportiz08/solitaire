@@ -2,10 +2,10 @@
   <div class="deck pile"></div>
   <div class="empty pile"></div>
   <div class="empty pile"></div>
-  <div class="special pile"></div>
-  <div class="special pile"></div>
-  <div class="special pile"></div>
-  <div class="special pile"></div>
+  <div class="foundation pile"></div>
+  <div class="foundation pile"></div>
+  <div class="foundation pile"></div>
+  <div class="foundation pile"></div>
 </div>
 <div class="wrapper bottom">
   <div class="one pile"></div>

@@ -4,6 +4,9 @@ CardView = require('views/card_view').CardView
 class exports.DeckView extends Backbone.View
   id: 'container'
   
+  events:
+    'pile.addCard': 'addToPile'
+  
   render: ->
     $(@el).html deckTemplate()
     
@@ -16,11 +19,18 @@ class exports.DeckView extends Backbone.View
     pile_6 = @collection.models[39..44]
     pile_7 = @collection.models[45..51]
     
-    $(@el).find('.pile').not('.empty, .deck').droppable({
+    # don't allow dragging cards into deck (or empty piles)
+    that = this
+    $(@el).find('.pile').not('.empty, .deck, .foundation').droppable({
       drop: (event, ui) ->
-        c = $(ui.draggable).detach()
-        $(this).prepend(c)
-        c.css({top: 0, left: 0})
+        that.addToPile this, ui
+    })
+    
+    # enforce correct ordering of foundation cards
+    $(@el).find('.foundation.pile').droppable({
+      disabled: true
+      drop: (event, ui) ->
+        that.addToPile this, ui
     })
     
     $(@el).find('.deck.pile').append((new CardView(model: card)).render().el) for card in deck_pile
@@ -32,3 +42,8 @@ class exports.DeckView extends Backbone.View
     $(@el).find('.six.pile').append((new CardView(model: card)).render().el) for card in pile_6
     $(@el).find('.seven.pile').append((new CardView(model: card)).render().el) for card in pile_7
     @
+  
+  addToPile: (pile, ui) ->
+    c = $(ui.draggable).detach()
+    $(pile).prepend(c)
+    c.css({top: 0, left: 0})
